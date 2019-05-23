@@ -5,6 +5,10 @@ var guessesLeft = 9;
 var guessed = [];
 var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
+function letsGuessed() {
+    document.querySelector("#guessed").innerHTML = "Your Guesses so Far: " + guessed;
+}
+
 function numGuessLeft() {
     document.querySelector("#guessesleft").innerHTML = "Guesses Left: " + guessesLeft;
 }
@@ -15,6 +19,7 @@ document.onkeyup = function(event) {
     var userInput = event.key.toLowerCase();
     guessesLeft--;
     guessed.push(userInput);
+    letsGuessed();
     numGuessLeft();
 if (computerGuess === userInput) {
     alert("Wow, you're smart")
