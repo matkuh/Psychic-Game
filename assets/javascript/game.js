@@ -13,14 +13,19 @@ numGuessLeft();
 
 document.onkeyup = function(event) {
     var userInput = event.key.toLowerCase();
-    guessed.push(userInput);
     guessesLeft--;
+    guessed.push(userInput);
+    numGuessLeft();
 if (computerGuess === userInput) {
     alert("Wow, you're smart")
-    document.querySelector("#wins").innerHTML = "Wins: " + wins;
     wins++
+    document.querySelector("#wins").innerHTML = "Wins: " + wins;
 }
-
+else if (guessesLeft === 0) {
+    alert("Wow, you're not that smart")
+    losses++
+    document.querySelector("#losses").innerHTML = "Losses: " + losses;
+}
 
 
 }
