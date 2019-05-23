@@ -34,13 +34,13 @@ if (computerChoices.includes(userInput) && guessed.includes(userInput) === false
     numGuessLeft();
 
     if  ((computerGuess) === (userInput)) {
-    alert("Wow, you're smart")
+    alert("Wow, you're smart!")
     wins++
     document.querySelector("#wins").innerHTML = "Wins: " + wins;
     reset();
 }
 else if (guessesLeft === 0) {
-    alert("Wow, you're not that smart")
+    alert("Wow, you're not that smart :(")
     losses++
     document.querySelector("#losses").innerHTML = "Losses: " + losses;
     reset();
