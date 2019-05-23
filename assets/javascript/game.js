@@ -5,6 +5,12 @@ var guessesLeft = 9;
 var guessed = [];
 var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
+function numGuessLeft() {
+    document.querySelector("#guessesleft").innerHTML = "Guesses Left: " + guessesLeft;
+}
+
+numGuessLeft();
+
 document.onkeyup = function(event) {
     var userInput = event.key.toLowerCase();
     guessed.push(userInput);
