@@ -5,4 +5,4 @@ var guessesLeft = 9;
 var guessed = [];
 var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
-
+document.onkeyup = function(event) {}
