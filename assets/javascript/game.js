@@ -3,7 +3,7 @@ var wins = 0;
 var losses = 0;
 var guessesLeft = 9;
 var guessed = [];
-var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+var computerGuess = ""
 
 function letsGuessed() {
     document.querySelector("#guessed").innerHTML = "Your Guesses so Far: " + guessed;
@@ -13,18 +13,14 @@ function numGuessLeft() {
     document.querySelector("#guessesleft").innerHTML = "Guesses Left: " + guessesLeft;
 }
 
-function lettersOnly(userInput) {
-    if (guessesLeft == 9) {
-        document.querySelector("#guessed").innerHTML +- userInput;
-    } else {
-        document.querySelector("#guessed").innerHTML +- ", " + userInput;
-    }
+function randLetter() {
+    computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 }
 
 function reset() {
-    guessesLeft = 9;
     guessed = [];
-    var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+    guessesLeft = 9;
+    randLetter();
 }
 
 numGuessLeft();
@@ -33,10 +29,9 @@ document.onkeyup = function(event) {
     var userInput = event.key.toLowerCase();
 if (computerChoices.includes(userInput) && guessed.includes(userInput) === false) {
     guessed.push(userInput);
-    lettersOnly(userInput);
     letsGuessed();
-    numGuessLeft();
     guessesLeft--;
+    numGuessLeft();
 
     if  ((computerGuess) === (userInput)) {
     alert("Wow, you're smart")
@@ -52,6 +47,7 @@ else if (guessesLeft === 0) {
 }
 }
 }
+
 
 
 
