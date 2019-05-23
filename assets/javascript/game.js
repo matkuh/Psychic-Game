@@ -2,9 +2,7 @@ var computerChoices = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l
 var wins = 0;
 var losses = 0;
 var guessesLeft = 9;
-var defaultGuessesLeft = 9;
 var guessed = [];
-var defaultGuessed = [];
 var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
 function letsGuessed() {
@@ -15,9 +13,17 @@ function numGuessLeft() {
     document.querySelector("#guessesleft").innerHTML = "Guesses Left: " + guessesLeft;
 }
 
+function lettersOnly(userInput) {
+    if (guessesLeft == 9) {
+        document.querySelector("#guessed").innerHTML +- userInput;
+    } else {
+        document.querySelector("#guessed").innerHTML +- ", " + userInput;
+    }
+}
+
 function reset() {
-    guessesLeft = defaultGuessesLeft;
-    guessed = defaultGuessed;
+    guessesLeft = 9;
+    guessed = [];
     var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 }
 
@@ -25,11 +31,14 @@ numGuessLeft();
 
 document.onkeyup = function(event) {
     var userInput = event.key.toLowerCase();
-    guessesLeft--;
+if (computerChoices.includes(userInput) && guessed.includes(userInput) === false) {
     guessed.push(userInput);
+    lettersOnly(userInput);
     letsGuessed();
     numGuessLeft();
-if (computerGuess === userInput) {
+    guessesLeft--;
+
+    if  ((computerGuess) === (userInput)) {
     alert("Wow, you're smart")
     wins++
     document.querySelector("#wins").innerHTML = "Wins: " + wins;
@@ -41,7 +50,8 @@ else if (guessesLeft === 0) {
     document.querySelector("#losses").innerHTML = "Losses: " + losses;
     reset();
 }
-
-
 }
+}
+
+
 
