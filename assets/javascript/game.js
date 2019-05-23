@@ -9,4 +9,13 @@ document.onkeyup = function(event) {
     var userInput = event.key.toLowerCase();
     guessed.push(userInput);
     guessesLeft--;
+if (computerGuess === userInput) {
+    alert("Wow, you're smart")
+    document.querySelector("#wins").innerHTML = "Wins: " + wins;
+    wins++
 }
+
+
+
+}
+
